@@ -1,0 +1,908 @@
+# Copyright (C) 2026 ADStn Developer Team
+# This file is distributed under the GPL v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: ADStn Auto Poster 1.0.0\n"
+"Report-Msgid-Bugs-To: https://www.adstn.ovh/developer\n"
+"POT-Creation-Date: 2026-08-25 02:15:00+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2026-YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: adstn-auto-poster.php:57
+msgid "Control Panel"
+msgstr ""
+
+#: includes/class-adstn-admin.php:47
+#: includes/class-adstn-metabox.php:33
+msgid "ADStn Auto Poster"
+msgstr ""
+
+#: includes/class-adstn-admin.php:48
+msgid "ADStn Poster"
+msgstr ""
+
+#: includes/class-adstn-admin.php:57
+msgid "Dashboard & Analytics"
+msgstr ""
+
+#: includes/class-adstn-admin.php:58
+msgid "Dashboard"
+msgstr ""
+
+#: includes/class-adstn-admin.php:66
+#: admin/views/tab-connection.php:19
+msgid "Connection Settings"
+msgstr ""
+
+#: includes/class-adstn-admin.php:67
+msgid "Connection"
+msgstr ""
+
+#: includes/class-adstn-admin.php:75
+#: admin/views/tab-publish-rules.php:58
+msgid "Publishing Rules"
+msgstr ""
+
+#: includes/class-adstn-admin.php:76
+msgid "Publish Rules"
+msgstr ""
+
+#: includes/class-adstn-admin.php:84
+msgid "Post Template"
+msgstr ""
+
+#: includes/class-adstn-admin.php:85
+msgid "Template"
+msgstr ""
+
+#: includes/class-adstn-admin.php:93
+#: admin/views/admin-dashboard.php:17
+msgid "Activity Logs"
+msgstr ""
+
+#: includes/class-adstn-admin.php:94
+msgid "Logs"
+msgstr ""
+
+#: includes/class-adstn-admin.php:137
+msgid "Are you sure you want to disconnect your ADStn account?"
+msgstr ""
+
+#: includes/class-adstn-admin.php:138
+msgid "Are you sure you want to clear all activity logs?"
+msgstr ""
+
+#: includes/class-adstn-admin.php:139
+msgid "Saving settings..."
+msgstr ""
+
+#: includes/class-adstn-admin.php:140
+#: includes/class-adstn-admin.php:271
+msgid "Settings saved successfully!"
+msgstr ""
+
+#: includes/class-adstn-admin.php:141
+msgid "Testing connection..."
+msgstr ""
+
+#: includes/class-adstn-admin.php:142
+msgid "Connection verified successfully!"
+msgstr ""
+
+#: includes/class-adstn-admin.php:143
+msgid "Sharing to ADStn..."
+msgstr ""
+
+#: includes/class-adstn-admin.php:144
+msgid "Published successfully to ADStn!"
+msgstr ""
+
+#: includes/class-adstn-admin.php:145
+msgid "Action failed!"
+msgstr ""
+
+#: includes/class-adstn-admin.php:146
+msgid "Copied to clipboard!"
+msgstr ""
+
+#: includes/class-adstn-admin.php:147
+msgid "Article"
+msgstr ""
+
+#: includes/class-adstn-admin.php:148
+msgid "Date"
+msgstr ""
+
+#: includes/class-adstn-admin.php:149
+#: admin/views/tab-logs.php:57
+msgid "Status"
+msgstr ""
+
+#: includes/class-adstn-admin.php:150
+msgid "Error"
+msgstr ""
+
+#: includes/class-adstn-admin.php:151
+msgid "Request Payload"
+msgstr ""
+
+#: includes/class-adstn-admin.php:152
+msgid "Server API Response"
+msgstr ""
+
+#: includes/class-adstn-admin.php:153
+msgid "Failed to load log details."
+msgstr ""
+
+#: includes/class-adstn-admin.php:176
+msgid "ADStn authorization failed: %s"
+msgstr ""
+
+#: includes/class-adstn-admin.php:187
+msgid "Error exchanging token: %s"
+msgstr ""
+
+#: includes/class-adstn-admin.php:189
+msgid "🎉 ADStn account connected successfully! Ready for auto-publishing."
+msgstr ""
+
+#: includes/class-adstn-admin.php:204
+msgid "Account disconnected successfully."
+msgstr ""
+
+#: includes/class-adstn-admin.php:220
+msgid "Profile details updated successfully."
+msgstr ""
+
+#: includes/class-adstn-admin.php:236
+msgid "🎉 Article published successfully on ADStn platform!"
+msgstr ""
+
+#: includes/class-adstn-admin.php:248
+msgid "Republished successfully!"
+msgstr ""
+
+#: includes/class-adstn-admin.php:258
+msgid "Logs cleared successfully."
+msgstr ""
+
+#: includes/class-adstn-admin.php:267
+msgid "Log record not found."
+msgstr ""
+
+#: admin/views/admin-dashboard.php:13
+msgid "Overview & Analytics"
+msgstr ""
+
+#: admin/views/admin-dashboard.php:14
+msgid "Connection & API"
+msgstr ""
+
+#: admin/views/admin-dashboard.php:16
+msgid "Content Template"
+msgstr ""
+
+#: admin/views/admin-dashboard.php:18
+msgid "Integration Guide"
+msgstr ""
+
+#: admin/views/admin-dashboard.php:33
+msgid "Auto-publish and instantly synchronize WordPress articles with ADStn platform"
+msgstr ""
+
+#: admin/views/admin-dashboard.php:41
+msgid "Account Connected"
+msgstr ""
+
+#: admin/views/admin-dashboard.php:46
+msgid "Not Connected"
+msgstr ""
+
+#: admin/views/admin-dashboard.php:52
+#: admin/views/tab-connection.php:191
+msgid "Test Connection"
+msgstr ""
+
+#: admin/views/admin-dashboard.php:97
+msgid "Action Details"
+msgstr ""
+
+#: admin/views/tab-overview.php:18
+msgid "Connected ADStn Account"
+msgstr ""
+
+#: admin/views/tab-overview.php:22
+msgid "Refresh Profile Details"
+msgstr ""
+
+#: admin/views/tab-overview.php:47
+msgid "ADStn Member"
+msgstr ""
+
+#: admin/views/tab-overview.php:58
+msgid "Followers"
+msgstr ""
+
+#: admin/views/tab-overview.php:62
+#: includes/class-adstn-metabox.php:79
+msgid "Active"
+msgstr ""
+
+#: admin/views/tab-overview.php:63
+msgid "Token Status"
+msgstr ""
+
+#: admin/views/tab-overview.php:67
+msgid "Privacy"
+msgstr ""
+
+#: admin/views/tab-overview.php:74
+msgid "View Profile on ADStn"
+msgstr ""
+
+#: admin/views/tab-overview.php:77
+#: admin/views/tab-connection.php:149
+msgid "Disconnect"
+msgstr ""
+
+#: admin/views/tab-overview.php:85
+msgid "Account Not Connected Yet"
+msgstr ""
+
+#: admin/views/tab-overview.php:86
+msgid "Connect your ADStn account to start auto-publishing your WordPress articles and reach a broader audience."
+msgstr ""
+
+#: admin/views/tab-overview.php:89
+msgid "Go to Connection Settings"
+msgstr ""
+
+#: admin/views/tab-overview.php:100
+msgid "ADStn Integration Highlights"
+msgstr ""
+
+#: admin/views/tab-overview.php:107
+msgid "Secure OAuth 2.0 Flow"
+msgstr ""
+
+#: admin/views/tab-overview.php:108
+msgid "Full token encryption and automatic refresh without storing account passwords."
+msgstr ""
+
+#: admin/views/tab-overview.php:114
+msgid "Rate Limit Compliance"
+msgstr ""
+
+#: admin/views/tab-overview.php:115
+msgid "Built-in handling for ADStn rate limits (30 requests/minute)."
+msgstr ""
+
+#: admin/views/tab-overview.php:121
+msgid "Dynamic Smart Templates"
+msgstr ""
+
+#: admin/views/tab-overview.php:122
+msgid "Complete customization of post format with automated hashtag extraction."
+msgstr ""
+
+#: admin/views/tab-overview.php:140
+msgid "Total Shares"
+msgstr ""
+
+#: admin/views/tab-overview.php:150
+msgid "Successful Posts"
+msgstr ""
+
+#: admin/views/tab-overview.php:160
+msgid "Failed Attempts"
+msgstr ""
+
+#: admin/views/tab-overview.php:170
+msgid "Last Activity"
+msgstr ""
+
+#: admin/views/tab-overview.php:179
+msgid "Active Settings Summary"
+msgstr ""
+
+#: admin/views/tab-overview.php:182
+msgid "Configure"
+msgstr ""
+
+#: admin/views/tab-overview.php:187
+msgid "Auto-Publish Status:"
+msgstr ""
+
+#: admin/views/tab-overview.php:190
+msgid "Enabled"
+msgstr ""
+
+#: admin/views/tab-overview.php:192
+msgid "Disabled"
+msgstr ""
+
+#: admin/views/tab-overview.php:198
+msgid "Enabled Post Types:"
+msgstr ""
+
+#: admin/views/tab-overview.php:208
+msgid "Default Privacy:"
+msgstr ""
+
+#: admin/views/tab-overview.php:215
+msgid "Hashtags Mode:"
+msgstr ""
+
+#: admin/views/tab-overview.php:219
+msgid "Mode: %s (Max: %d)"
+msgstr ""
+
+#: admin/views/tab-overview.php:229
+msgid "Quick Share Tool (ADStn Web Share API)"
+msgstr ""
+
+#: admin/views/tab-overview.php:234
+msgid "Test sending text and links to the ADStn share composer directly:"
+msgstr ""
+
+#: admin/views/tab-overview.php:237
+msgid "Enter text and URL to share..."
+msgstr ""
+
+#: admin/views/tab-overview.php:240
+msgid "Share"
+msgstr ""
+
+#: admin/views/tab-connection.php:21
+msgid "Authentication Method"
+msgstr ""
+
+#: admin/views/tab-connection.php:26
+msgid "Recommended"
+msgstr ""
+
+#: admin/views/tab-connection.php:30
+msgid "Manual Access Token"
+msgstr ""
+
+#: admin/views/tab-connection.php:41
+msgid "Authorized Redirect URI:"
+msgstr ""
+
+#: admin/views/tab-connection.php:42
+msgid "Copy this URL and paste it into the Redirect URIs field when creating your app on ADStn Developer Platform:"
+msgstr ""
+
+#: admin/views/tab-connection.php:46
+msgid "Copy URL"
+msgstr ""
+
+#: admin/views/tab-connection.php:57
+msgid "Client ID"
+msgstr ""
+
+#: admin/views/tab-connection.php:61
+msgid "Generated upon creating your application in the ADStn Developer Platform."
+msgstr ""
+
+#: admin/views/tab-connection.php:66
+msgid "Client Secret"
+msgstr ""
+
+#: admin/views/tab-connection.php:74
+msgid "Keep this credential confidential and never share it publicly."
+msgstr ""
+
+#: admin/views/tab-connection.php:82
+msgid "Connect & Authorize with ADStn"
+msgstr ""
+
+#: admin/views/tab-connection.php:87
+msgid "Save Credentials to Enable One-Click Connect"
+msgstr ""
+
+#: admin/views/tab-connection.php:93
+msgid "Create New App on ADStn"
+msgstr ""
+
+#: admin/views/tab-connection.php:103
+msgid "Bearer Access Token"
+msgstr ""
+
+#: admin/views/tab-connection.php:111
+msgid "If you generated an access token directly on ADStn, paste it here for instant connection."
+msgstr ""
+
+#: admin/views/tab-connection.php:121
+msgid "Session & Token Details"
+msgstr ""
+
+#: admin/views/tab-connection.php:127
+msgid "Auth Status"
+msgstr ""
+
+#: admin/views/tab-connection.php:128
+msgid "Connected & Valid"
+msgstr ""
+
+#: admin/views/tab-connection.php:132
+msgid "Token Expiry"
+msgstr ""
+
+#: admin/views/tab-connection.php:137
+msgid "Expires in %d minutes (auto-refreshes)"
+msgstr ""
+
+#: admin/views/tab-connection.php:139
+msgid "Expired (will auto-refresh on demand)"
+msgstr ""
+
+#: admin/views/tab-connection.php:142
+msgid "Permanent / Manual Token"
+msgstr ""
+
+#: admin/views/tab-connection.php:147
+msgid "Active Scopes"
+msgstr ""
+
+#: admin/views/tab-connection.php:156
+msgid "Save Connection Settings"
+msgstr ""
+
+#: admin/views/tab-connection.php:160
+msgid "Test ADStn Connection"
+msgstr ""
+
+#: admin/views/tab-publish-rules.php:35
+msgid "Enable Global Auto-Publishing to ADStn"
+msgstr ""
+
+#: admin/views/tab-publish-rules.php:38
+msgid "When enabled, eligible articles will be automatically posted to ADStn upon publishing."
+msgstr ""
+
+#: admin/views/tab-publish-rules.php:51
+msgid "Post Types & Trigger Events"
+msgstr ""
+
+#: admin/views/tab-publish-rules.php:57
+msgid "Supported Post Types:"
+msgstr ""
+
+#: admin/views/tab-publish-rules.php:73
+msgid "Publish Trigger Events:"
+msgstr ""
+
+#: admin/views/tab-publish-rules.php:78
+msgid "When a new post is published for the first time"
+msgstr ""
+
+#: admin/views/tab-publish-rules.php:86
+msgid "When an already published post is updated"
+msgstr ""
+
+#: admin/views/tab-publish-rules.php:98
+msgid "Category Filters"
+msgstr ""
+
+#: admin/views/tab-publish-rules.php:106
+msgid "Include Specific Categories Only:"
+msgstr ""
+
+#: admin/views/tab-publish-rules.php:108
+msgid "Leave empty to automatically include all categories."
+msgstr ""
+
+#: admin/views/tab-publish-rules.php:127
+msgid "Exclude Specific Categories:"
+msgstr ""
+
+#: admin/views/tab-publish-rules.php:129
+msgid "Articles belonging to excluded categories will never be shared to ADStn."
+msgstr ""
+
+#: admin/views/tab-publish-rules.php:150
+msgid "Default Privacy Level on ADStn"
+msgstr ""
+
+#: admin/views/tab-publish-rules.php:158
+msgid "Public (All Members & Guests)"
+msgstr ""
+
+#: admin/views/tab-publish-rules.php:159
+msgid "Visible to everyone on the ADStn community feed and search engines (highest reach)."
+msgstr ""
+
+#: admin/views/tab-publish-rules.php:167
+msgid "Followers Only"
+msgstr ""
+
+#: admin/views/tab-publish-rules.php:168
+msgid "Visible only to your account followers on ADStn."
+msgstr ""
+
+#: admin/views/tab-publish-rules.php:176
+msgid "Private (Only Me)"
+msgstr ""
+
+#: admin/views/tab-publish-rules.php:177
+msgid "Visible only to you in your ADStn account."
+msgstr ""
+
+#: admin/views/tab-publish-rules.php:188
+msgid "Save Publishing Rules"
+msgstr ""
+
+#: admin/views/tab-template.php:28
+msgid "Message Template Builder"
+msgstr ""
+
+#: admin/views/tab-template.php:36
+msgid "Available Dynamic Tags (Click to insert):"
+msgstr ""
+
+#: admin/views/tab-template.php:40
+msgid "Article Title"
+msgstr ""
+
+#: admin/views/tab-template.php:41
+msgid "Title"
+msgstr ""
+
+#: admin/views/tab-template.php:44
+msgid "Direct Article Permalink"
+msgstr ""
+
+#: admin/views/tab-template.php:45
+msgid "URL"
+msgstr ""
+
+#: admin/views/tab-template.php:48
+msgid "Article Excerpt or Summary"
+msgstr ""
+
+#: admin/views/tab-template.php:49
+msgid "Excerpt"
+msgstr ""
+
+#: admin/views/tab-template.php:52
+msgid "Auto-generated Hashtags"
+msgstr ""
+
+#: admin/views/tab-template.php:53
+msgid "Hashtags"
+msgstr ""
+
+#: admin/views/tab-template.php:56
+msgid "Post Author Display Name"
+msgstr ""
+
+#: admin/views/tab-template.php:57
+msgid "Author"
+msgstr ""
+
+#: admin/views/tab-template.php:60
+msgid "Comma-separated Categories"
+msgstr ""
+
+#: admin/views/tab-template.php:61
+msgid "Categories"
+msgstr ""
+
+#: admin/views/tab-template.php:64
+msgid "Comma-separated Tags"
+msgstr ""
+
+#: admin/views/tab-template.php:65
+msgid "Tags"
+msgstr ""
+
+#: admin/views/tab-template.php:68
+msgid "WordPress Site Title"
+msgstr ""
+
+#: admin/views/tab-template.php:69
+msgid "Site Name"
+msgstr ""
+
+#: admin/views/tab-template.php:77
+msgid "Template Format:"
+msgstr ""
+
+#: admin/views/tab-template.php:82
+msgid "characters (approx.)"
+msgstr ""
+
+#: admin/views/tab-template.php:93
+msgid "Excerpt & Hashtags Configuration"
+msgstr ""
+
+#: admin/views/tab-template.php:100
+msgid "Maximum Excerpt Length {excerpt} in characters:"
+msgstr ""
+
+#: admin/views/tab-template.php:111
+msgid "Generate Hashtags {hashtags} From:"
+msgstr ""
+
+#: admin/views/tab-template.php:115
+msgid "Post Tags Only"
+msgstr ""
+
+#: admin/views/tab-template.php:116
+msgid "Post Categories Only"
+msgstr ""
+
+#: admin/views/tab-template.php:117
+msgid "Both Tags and Categories"
+msgstr ""
+
+#: admin/views/tab-template.php:118
+msgid "No Hashtags"
+msgstr ""
+
+#: admin/views/tab-template.php:124
+msgid "Maximum Hashtag Count:"
+msgstr ""
+
+#: admin/views/tab-template.php:140
+msgid "Live Preview on ADStn Platform"
+msgstr ""
+
+#: admin/views/tab-template.php:142
+msgid "Real-time"
+msgstr ""
+
+#: admin/views/tab-template.php:147
+msgid "Simulated preview of how your shared post will look on ADStn:"
+msgstr ""
+
+#: admin/views/tab-template.php:171
+msgid "Just now • Auto-shared from WordPress"
+msgstr ""
+
+#: admin/views/tab-template.php:185
+msgid "Sample Article Title for Auto-Publishing"
+msgstr ""
+
+#: admin/views/tab-template.php:186
+msgid "Click here to read the full article on our website..."
+msgstr ""
+
+#: admin/views/tab-template.php:193
+msgid "Like"
+msgstr ""
+
+#: admin/views/tab-template.php:196
+msgid "Comment"
+msgstr ""
+
+#: admin/views/tab-template.php:209
+msgid "Save Message Template"
+msgstr ""
+
+#: admin/views/tab-logs.php:28
+msgid "Activity & Sync Logs"
+msgstr ""
+
+#: admin/views/tab-logs.php:37
+msgid "Search logs..."
+msgstr ""
+
+#: admin/views/tab-logs.php:40
+msgid "All Statuses"
+msgstr ""
+
+#: admin/views/tab-logs.php:41
+msgid "Success Only"
+msgstr ""
+
+#: admin/views/tab-logs.php:42
+msgid "Failed Only"
+msgstr ""
+
+#: admin/views/tab-logs.php:46
+msgid "Filter"
+msgstr ""
+
+#: admin/views/tab-logs.php:51
+msgid "Reset"
+msgstr ""
+
+#: admin/views/tab-logs.php:58
+msgid "Post Title"
+msgstr ""
+
+#: admin/views/tab-logs.php:59
+msgid "Date & Time"
+msgstr ""
+
+#: admin/views/tab-logs.php:60
+msgid "Response / Result"
+msgstr ""
+
+#: admin/views/tab-logs.php:61
+msgid "Actions"
+msgstr ""
+
+#: admin/views/tab-logs.php:68
+msgid "Published Successfully"
+msgstr ""
+
+#: admin/views/tab-logs.php:69
+msgid "Success"
+msgstr ""
+
+#: admin/views/tab-logs.php:73
+msgid "Publishing Failed"
+msgstr ""
+
+#: admin/views/tab-logs.php:74
+msgid "Failed"
+msgstr ""
+
+#: admin/views/tab-logs.php:78
+msgid "Pending"
+msgstr ""
+
+#: admin/views/tab-logs.php:97
+msgid "Content published and verified on ADStn"
+msgstr ""
+
+#: admin/views/tab-logs.php:108
+msgid "View Request & Response Details"
+msgstr ""
+
+#: admin/views/tab-logs.php:113
+msgid "Retry Publish Now"
+msgstr ""
+
+#: admin/views/tab-logs.php:143
+msgid "No Logs Recorded Yet"
+msgstr ""
+
+#: admin/views/tab-logs.php:144
+msgid "When you publish new articles, every auto-publishing attempt will be recorded here in detail."
+msgstr ""
+
+#: admin/views/tab-help.php:21
+msgid "ADStn Integration Walkthrough"
+msgstr ""
+
+#: admin/views/tab-help.php:31
+msgid "Create an App on ADStn Developer Platform"
+msgstr ""
+
+#: admin/views/tab-help.php:32
+msgid "Log in to your ADStn account and navigate to the developer app creation portal:"
+msgstr ""
+
+#: admin/views/tab-help.php:43
+msgid "Enter App Details & Redirect URI"
+msgstr ""
+
+#: admin/views/tab-help.php:44
+msgid "Fill in your application name and domain, then copy and paste this Redirect URI into the authorized callback field:"
+msgstr ""
+
+#: admin/views/tab-help.php:48
+msgid "Copy"
+msgstr ""
+
+#: admin/views/tab-help.php:58
+msgid "Select Required OAuth 2.0 Scopes"
+msgstr ""
+
+#: admin/views/tab-help.php:59
+msgid "Ensure you enable the following permissions for your app:"
+msgstr ""
+
+#: admin/views/tab-help.php:72
+msgid "Copy Credentials & Authorize"
+msgstr ""
+
+#: admin/views/tab-help.php:73
+msgid "Paste your Client ID and Client Secret into the \"Connection\" tab of this plugin, then click \"Connect & Authorize with ADStn\"."
+msgstr ""
+
+#: admin/views/tab-help.php:89
+msgid "Template Tags Reference"
+msgstr ""
+
+#: admin/views/tab-help.php:96
+msgid "Full title of the published article"
+msgstr ""
+
+#: admin/views/tab-help.php:100
+msgid "Direct permalink to the published article"
+msgstr ""
+
+#: admin/views/tab-help.php:104
+msgid "Article excerpt or trimmed content summary"
+msgstr ""
+
+#: admin/views/tab-help.php:108
+msgid "Automated hashtags generated from tags/categories (#tag)"
+msgstr ""
+
+#: admin/views/tab-help.php:112
+msgid "Display name of the post author"
+msgstr ""
+
+#: admin/views/tab-help.php:116
+msgid "WordPress site title"
+msgstr ""
+
+#: admin/views/tab-help.php:120
+msgid "Comma-separated post category names"
+msgstr ""
+
+#: admin/views/tab-help.php:124
+msgid "Comma-separated post tag names"
+msgstr ""
+
+#: admin/views/tab-help.php:134
+msgid "ADStn Embeddable JavaScript Widgets"
+msgstr ""
+
+#: admin/views/tab-help.php:139
+msgid "ADStn provides embeddable JavaScript widgets to display your profile card or follow button on your website:"
+msgstr ""
+
+#: includes/class-adstn-metabox.php:49
+msgid "ADStn account not connected"
+msgstr ""
+
+#: includes/class-adstn-metabox.php:50
+msgid "Please connect your account in plugin settings to enable auto-publishing."
+msgstr ""
+
+#: includes/class-adstn-metabox.php:53
+msgid "Connect Account Now"
+msgstr ""
+
+#: includes/class-adstn-metabox.php:68
+msgid "Connected to ADStn"
+msgstr ""
+
+#: includes/class-adstn-metabox.php:87
+msgid "Published to ADStn"
+msgstr ""
+
+#: includes/class-adstn-metabox.php:90
+msgid "Date: %s"
+msgstr ""
+
+#: includes/class-adstn-metabox.php:98
+msgid "Previous publish failed:"
+msgstr ""
+
+#: includes/class-adstn-metabox.php:107
+msgid "Auto-publish this post to ADStn"
+msgstr ""
+
+#: includes/class-adstn-metabox.php:110
+msgid "This post will be automatically shared when published."
+msgstr ""
+
+#: includes/class-adstn-metabox.php:117
+msgid "Custom Post Message (Optional):"
+msgstr ""
+
+#: includes/class-adstn-metabox.php:120
+msgid "Leave blank to use default template..."
+msgstr ""
+
+#: includes/class-adstn-metabox.php:122
+msgid "Supports tags: {title}, {url}, {excerpt}, {hashtags}"
+msgstr ""
+
+#: includes/class-adstn-metabox.php:130
+msgid "Share to ADStn Now"
+msgstr ""
