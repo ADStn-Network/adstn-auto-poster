@@ -2,8 +2,8 @@
 Contributors: adstn
 Donate link: https://www.adstn.ovh
 Tags: adstn, auto publish, social share, auto post, crosspost, social media, oauth2
-Requires at least: 5.6
-Tested up to: 6.7
+Requires at least: 5.8
+Tested up to: 7.1
 Requires PHP: 7.4
 Stable tag: 1.0.0
 License: GPLv2 or later

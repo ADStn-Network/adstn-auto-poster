@@ -107,7 +107,7 @@ $total_pages = $logs_data['total_pages'];
 									<?php if ( ! empty( $log['post_id'] ) ) : ?>
 										<strong>
 											<a href="<?php echo esc_url( get_edit_post_link( $log['post_id'] ) ); ?>" target="_blank">
-												<?php echo esc_html( ! empty( $log['post_title'] ) ? $log['post_title'] : __( 'Post #' . $log['post_id'], 'adstn-auto-poster' ) ); ?>
+												<?php echo esc_html( ! empty( $log['post_title'] ) ? $log['post_title'] : sprintf( __( 'Post #%s', 'adstn-auto-poster' ), $log['post_id'] ) ); ?>
 											</a>
 										</strong>
 										<span style="font-size: 11px; color: var(--adstn-text-muted); display: block;">ID: #<?php echo esc_html( $log['post_id'] ); ?></span>
