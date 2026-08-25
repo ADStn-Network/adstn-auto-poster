@@ -138,26 +138,22 @@ $redirect_uri = ADStn_API_Client::get_redirect_uri();
 			</div>
 		</div>
 
-		<!-- ADStn Embed Widgets Info -->
+		<!-- ADStn Developer Documentation Card -->
 		<div class="adstn-card" style="margin-top: 24px;">
 			<div class="adstn-card-header">
 				<h2 class="adstn-card-title">
-					<span class="dashicons dashicons-embed-generic"></span>
-					<?php esc_html_e( 'ADStn Embeddable JavaScript Widgets', 'adstn-auto-poster' ); ?>
+					<span class="dashicons dashicons-external"></span>
+					<?php esc_html_e( 'Official ADStn Developer Resources', 'adstn-auto-poster' ); ?>
 				</h2>
 			</div>
 			<div class="adstn-card-body">
 				<p style="font-size: 13px; color: var(--adstn-text-muted); margin-top: 0;">
-					<?php esc_html_e( 'ADStn provides embeddable JavaScript widgets to display your profile card or follow button on your website:', 'adstn-auto-poster' ); ?>
+					<?php esc_html_e( 'Learn more about API endpoints, webhooks, rate limits, and profile widgets in the official developer documentation:', 'adstn-auto-poster' ); ?>
 				</p>
-
-				<div class="adstn-code-snippet">
-					<div class="adstn-code-toolbar">
-						<span>Follow Button Widget</span>
-					</div>
-					<pre><code>&lt;div id="myads-widget-follow-YOUR_APP_ID"&gt;&lt;/div&gt;
-&lt;script src="https://www.adstn.ovh/embed/developer/YOUR_APP_ID/follow.js"&gt;&lt;/script&gt;</code></pre>
-				</div>
+				<a href="https://www.adstn.ovh/developer/guides" target="_blank" class="adstn-btn adstn-btn-secondary" style="margin-top: 8px;">
+					<span class="dashicons dashicons-book"></span>
+					<?php esc_html_e( 'View ADStn Developer Guides', 'adstn-auto-poster' ); ?> &rarr;
+				</a>
 			</div>
 		</div>
 

@@ -16,36 +16,7 @@ class ADStn_Activator {
 	 * Run on plugin activation.
 	 */
 	public static function activate() {
-		self::create_database_tables();
 		self::set_default_options();
-	}
-
-	/**
-	 * Create custom DB table for logs.
-	 */
-	private static function create_database_tables() {
-		global $wpdb;
-
-		$table_name      = $wpdb->prefix . 'adstn_logs';
-		$charset_collate = $wpdb->get_charset_collate();
-
-		$sql = "CREATE TABLE IF NOT EXISTS $table_name (
-			id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-			post_id bigint(20) unsigned DEFAULT 0,
-			post_title text NOT NULL,
-			status varchar(20) NOT NULL DEFAULT 'pending',
-			request_payload longtext DEFAULT NULL,
-			response_data longtext DEFAULT NULL,
-			error_message text DEFAULT NULL,
-			created_at datetime DEFAULT CURRENT_TIMESTAMP NOT NULL,
-			PRIMARY KEY  (id),
-			KEY post_id (post_id),
-			KEY status (status),
-			KEY created_at (created_at)
-		) $charset_collate;";
-
-		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
-		dbDelta( $sql );
 	}
 
 	/**
@@ -70,7 +41,6 @@ class ADStn_Activator {
 			'include_tags'       => '1',
 			'hashtags_mode'      => 'tags', // 'tags', 'categories', 'both', 'none'
 			'max_hashtags'       => 5,
-			'log_retention_days' => 30,
 			'connected_user'     => array(),
 		);
 
@@ -90,5 +60,6 @@ class ADStn_Activator {
 	public static function deactivate() {
 		// Clean transient data
 		delete_transient( 'adstn_user_profile' );
+		delete_transient( 'adstn_admin_notice' );
 	}
 }
