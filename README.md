@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![ADStn Logo](https://www.adstn.ovh/themes/default/staticthemecache/header-logo.png)
+![ADStn Logo](https://www.adstn.ovh/themes/default/assets/img/logo_w.webp)
 
 ### Auto-publish and synchronize WordPress articles to the ADStn social platform seamlessly via Developer REST API & OAuth 2.0.
 
