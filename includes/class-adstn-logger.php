@@ -81,7 +81,7 @@ class ADStn_Logger {
 		$updated = $wpdb->update(
 			self::get_table_name(),
 			$args,
-			array( 'id' => $log_id )
+			array( 'id' => absint( $log_id ) )
 		);
 
 		return false !== $updated;
@@ -127,25 +127,28 @@ class ADStn_Logger {
 		$orderby      = in_array( $r['orderby'], array( 'id', 'created_at', 'status', 'post_id' ), true ) ? $r['orderby'] : 'created_at';
 		$order        = 'ASC' === strtoupper( $r['order'] ) ? 'ASC' : 'DESC';
 
-		$offset = ( $r['page'] - 1 ) * $r['per_page'];
+		$per_page = max( 1, absint( $r['per_page'] ) );
+		$page     = max( 1, absint( $r['page'] ) );
+		$offset   = ( $page - 1 ) * $per_page;
 
 		// Get total count
-		$count_query = "SELECT COUNT(*) FROM $table WHERE $where_clause";
+		$count_query = "SELECT COUNT(*) FROM {$table} WHERE {$where_clause}";
 		if ( ! empty( $params ) ) {
-			$count_query = $wpdb->prepare( $count_query, $params );
+			$total_items = (int) $wpdb->get_var( $wpdb->prepare( $count_query, $params ) );
+		} else {
+			$total_items = (int) $wpdb->get_var( $count_query );
 		}
-		$total_items = (int) $wpdb->get_var( $count_query );
 
 		// Get items
-		$query = "SELECT * FROM $table WHERE $where_clause ORDER BY $orderby $order LIMIT %d OFFSET %d";
-		$query_params = array_merge( $params, array( $r['per_page'], $offset ) );
+		$query = "SELECT * FROM {$table} WHERE {$where_clause} ORDER BY {$orderby} {$order} LIMIT %d OFFSET %d";
+		$query_params = array_merge( $params, array( $per_page, $offset ) );
 		$items = $wpdb->get_results( $wpdb->prepare( $query, $query_params ), ARRAY_A );
 
 		return array(
 			'items'        => $items ? $items : array(),
 			'total_items'  => $total_items,
-			'total_pages'  => ceil( $total_items / $r['per_page'] ),
-			'current_page' => $r['page'],
+			'total_pages'  => ceil( $total_items / $per_page ),
+			'current_page' => $page,
 		);
 	}
 
@@ -159,7 +162,8 @@ class ADStn_Logger {
 		$table = self::get_table_name();
 
 		// Check if table exists
-		if ( $wpdb->get_var( "SHOW TABLES LIKE '$table'" ) !== $table ) {
+		$table_exists = $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $table ) );
+		if ( $table_exists !== $table ) {
 			return array(
 				'total'      => 0,
 				'success'    => 0,
@@ -168,10 +172,10 @@ class ADStn_Logger {
 			);
 		}
 
-		$total   = (int) $wpdb->get_var( "SELECT COUNT(*) FROM $table" );
-		$success = (int) $wpdb->get_var( "SELECT COUNT(*) FROM $table WHERE status = 'success'" );
-		$failed  = (int) $wpdb->get_var( "SELECT COUNT(*) FROM $table WHERE status = 'failed'" );
-		$last    = $wpdb->get_var( "SELECT created_at FROM $table ORDER BY created_at DESC LIMIT 1" );
+		$total   = (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$table}" );
+		$success = (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$table} WHERE status = 'success'" );
+		$failed  = (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$table} WHERE status = 'failed'" );
+		$last    = $wpdb->get_var( "SELECT created_at FROM {$table} ORDER BY created_at DESC LIMIT 1" );
 
 		return array(
 			'total'      => $total,
@@ -189,7 +193,7 @@ class ADStn_Logger {
 	public static function clear_logs() {
 		global $wpdb;
 		$table = self::get_table_name();
-		return false !== $wpdb->query( "TRUNCATE TABLE $table" );
+		return false !== $wpdb->query( "TRUNCATE TABLE {$table}" );
 	}
 
 	/**
@@ -201,6 +205,6 @@ class ADStn_Logger {
 	public static function get_log( $id ) {
 		global $wpdb;
 		$table = self::get_table_name();
-		return $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $table WHERE id = %d", $id ), ARRAY_A );
+		return $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$table} WHERE id = %d", absint( $id ) ), ARRAY_A );
 	}
 }

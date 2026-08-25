@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name:       ADStn Auto Poster - النشر التلقائي في ADStn
- * Plugin URI:        https://www.adstn.ovh/developer
- * Description:       إضافة ووردبريس احترافية للنشر التلقائي والمزامنة الفورية للمقالات في منصة ADStn عبر الـ API مع لوحة تحكم متكاملة.
+ * Plugin Name:       ADStn Auto Poster
+ * Plugin URI:        https://github.com/ADStn-Network/adstn-auto-poster
+ * Description:       Auto-publish and synchronize WordPress articles to the ADStn social platform seamlessly via Developer REST API & OAuth 2.0.
  * Version:           1.0.0
  * Author:            ADStn Developer Team
  * Author URI:        https://www.adstn.ovh

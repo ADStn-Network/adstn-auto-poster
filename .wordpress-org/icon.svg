@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <linearGradient id="adstnGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#615dfa"/>
+      <stop offset="50%" stop-color="#7e57c2"/>
+      <stop offset="100%" stop-color="#23d2e2"/>
+    </linearGradient>
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#615dfa" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Background rounded rectangle -->
+  <rect width="256" height="256" rx="56" fill="url(#adstnGrad)"/>
+
+  <!-- Inner glowing circle / badge -->
+  <circle cx="128" cy="128" r="90" fill="#ffffff" fill-opacity="0.12"/>
+  <circle cx="128" cy="128" r="74" fill="#ffffff" fill-opacity="0.18"/>
+
+  <!-- Logo symbol (Play/Publish arrow in rounded circle) -->
+  <g filter="url(#dropShadow)">
+    <circle cx="128" cy="128" r="54" fill="#ffffff"/>
+    <path d="M116 102 L154 128 L116 154 Z" fill="#615dfa"/>
+  </g>
+
+  <!-- Share connection nodes -->
+  <circle cx="68" cy="74" r="10" fill="#23d2e2"/>
+  <circle cx="196" cy="80" r="8" fill="#10d876"/>
+  <circle cx="188" cy="184" r="12" fill="#ffffff" fill-opacity="0.8"/>
+  <circle cx="72" cy="180" r="8" fill="#ffb400"/>
+</svg>

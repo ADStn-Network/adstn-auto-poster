@@ -1,5 +1,6 @@
 === ADStn Auto Poster ===
 Contributors: adstn
+Donate link: https://www.adstn.ovh
 Tags: adstn, auto publish, social share, auto post, crosspost, social media, oauth2
 Requires at least: 5.6
 Tested up to: 6.7
@@ -49,6 +50,16 @@ Increase your reach, boost social engagement, and drive traffic back to your web
   * Clean, responsive UI with Glassmorphism styling and dark/light accents.
   * 100% WordPress i18n/l10n standard compliant with complete English source and ready-to-use Arabic translations.
 
+== Third-Party Services ==
+
+This plugin integrates with and connects to the **ADStn Developer Platform** (https://www.adstn.ovh) in order to publish articles and manage social account connectivity.
+
+* **Service Name**: ADStn (https://www.adstn.ovh)
+* **Purpose**: User OAuth 2.0 authentication, profile validation, and publishing post content to the authenticated user's ADStn feed.
+* **Data Transmitted**: Post title, URL, post excerpt, generated hashtags, and user OAuth tokens. No private site data or visitor information is sent.
+* **Terms of Service**: https://www.adstn.ovh/terms/terms
+* **Privacy Policy**: https://www.adstn.ovh/terms/privacy-policy
+
 == Installation ==
 
 1. Upload the `adstn-auto-poster` directory to your WordPress plugins directory (`/wp-content/plugins/`).
@@ -80,12 +91,12 @@ Yes. The plugin is 100% internationalized with `.pot`, `.po`, and `.mo` files in
 
 == Screenshots ==
 
-1. **Dashboard & Analytics**: Overview of connected account profile, follower counters, and publishing metrics.
-2. **Connection Settings**: OAuth 2.0 one-click connect and manual bearer token fallback options.
-3. **Publishing Rules**: Post types, category filters, and default privacy settings.
-4. **Template Builder & Live Preview**: Dynamic template editor with live simulation feed card.
-5. **Activity Logs**: Detailed log table with inspectable request/response payloads and retry action.
-6. **Post Editor Metabox**: Sidebar controls in Gutenberg and Classic editor for per-post overrides and instant sharing.
+1. Overview of connected account profile, follower counters, and publishing metrics.
+2. OAuth 2.0 one-click connect and manual bearer token fallback options.
+3. Post types, category filters, and default privacy settings.
+4. Dynamic template editor with live simulation feed card.
+5. Detailed log table with inspectable request/response payloads and retry action.
+6. Sidebar controls in Gutenberg and Classic editor for per-post overrides and instant sharing.
 
 == Changelog ==
 
@@ -97,3 +108,8 @@ Yes. The plugin is 100% internationalized with `.pot`, `.po`, and `.mo` files in
 * Post editor sidebar metabox with AJAX instant share.
 * Comprehensive activity logging and error inspection with one-click retry.
 * Full WordPress i18n/L10n multilingual support (English & Arabic).
+
+== Upgrade Notice ==
+
+= 1.0.0 =
+Initial official release on WordPress.org.
