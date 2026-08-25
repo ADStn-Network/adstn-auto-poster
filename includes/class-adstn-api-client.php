@@ -344,6 +344,7 @@ class ADStn_API_Client {
 		}
 
 		if ( $status_code >= 400 ) {
+			/* translators: %d: HTTP status code from the API response */
 			$err = isset( $body['message'] ) ? $body['message'] : sprintf( __( 'API returned HTTP %d', 'adstn-auto-poster' ), $status_code );
 			return new WP_Error( 'profile_fetch_error', $err, $body );
 		}
@@ -434,6 +435,7 @@ class ADStn_API_Client {
 		}
 
 		if ( $status_code >= 400 || ( isset( $body['success'] ) && false === $body['success'] ) ) {
+			/* translators: %d: HTTP status code from the ADStn API response */
 			$err_msg = isset( $body['message'] ) ? $body['message'] : ( isset( $body['error'] ) ? $body['error'] : sprintf( __( 'ADStn API Error (HTTP %d)', 'adstn-auto-poster' ), $status_code ) );
 			return new WP_Error( 'publish_error', $err_msg, array(
 				'http_code' => $status_code,

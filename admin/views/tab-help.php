@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$redirect_uri = ADStn_API_Client::get_redirect_uri();
+$adstn_redirect_uri = ADStn_API_Client::get_redirect_uri();
 ?>
 
 <div class="adstn-grid-2">
@@ -48,7 +48,7 @@ $redirect_uri = ADStn_API_Client::get_redirect_uri();
 							<h4><?php esc_html_e( 'Enter App Details & Redirect URI', 'adstn-auto-poster' ); ?></h4>
 							<p><?php esc_html_e( 'Fill in your application name and domain, then copy and paste this Redirect URI into the authorized callback field:', 'adstn-auto-poster' ); ?></p>
 							<div class="adstn-copy-box" style="margin-top: 6px;">
-								<input type="text" readonly id="adstn-help-redirect-uri" class="adstn-input" value="<?php echo esc_url( $redirect_uri ); ?>">
+								<input type="text" readonly id="adstn-help-redirect-uri" class="adstn-input" value="<?php echo esc_url( $adstn_redirect_uri ); ?>">
 								<button type="button" class="adstn-btn adstn-btn-secondary js-adstn-copy" data-target="#adstn-help-redirect-uri">
 									<span class="dashicons dashicons-clipboard"></span>
 									<span><?php esc_html_e( 'Copy', 'adstn-auto-poster' ); ?></span>

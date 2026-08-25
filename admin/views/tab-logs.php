@@ -9,20 +9,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$page_num  = isset( $_GET['paged'] ) ? max( 1, (int) $_GET['paged'] ) : 1;
-$filter_st = isset( $_GET['status_filter'] ) ? sanitize_text_field( wp_unslash( $_GET['status_filter'] ) ) : '';
-$search_q  = isset( $_GET['s_log'] ) ? sanitize_text_field( wp_unslash( $_GET['s_log'] ) ) : '';
+// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only GET parameters for pagination/filtering on an admin page.
+$adstn_page_num  = isset( $_GET['paged'] ) ? max( 1, (int) $_GET['paged'] ) : 1;
+$adstn_filter_st = isset( $_GET['status_filter'] ) ? sanitize_text_field( wp_unslash( $_GET['status_filter'] ) ) : '';
+$adstn_search_q  = isset( $_GET['s_log'] ) ? sanitize_text_field( wp_unslash( $_GET['s_log'] ) ) : '';
+// phpcs:enable WordPress.Security.NonceVerification.Recommended
 
-$logs_data = ADStn_Logger::get_logs( array(
-	'page'     => $page_num,
+$adstn_logs_data = ADStn_Logger::get_logs( array(
+	'page'     => $adstn_page_num,
 	'per_page' => 15,
-	'status'   => $filter_st,
-	'search'   => $search_q,
+	'status'   => $adstn_filter_st,
+	'search'   => $adstn_search_q,
 ) );
 
-$items       = $logs_data['items'];
-$total_items = $logs_data['total_items'];
-$total_pages = $logs_data['total_pages'];
+$adstn_items       = $adstn_logs_data['items'];
+$adstn_total_items = $adstn_logs_data['total_items'];
+$adstn_total_pages = $adstn_logs_data['total_pages'];
 ?>
 
 <div class="adstn-card">
@@ -32,7 +34,7 @@ $total_pages = $logs_data['total_pages'];
 		<h2 class="adstn-card-title">
 			<span class="dashicons dashicons-list-view"></span>
 			<?php esc_html_e( 'Activity & Sync Logs', 'adstn-auto-poster' ); ?>
-			<span class="adstn-badge adstn-badge-info"><?php echo esc_html( $total_items ); ?></span>
+			<span class="adstn-badge adstn-badge-info"><?php echo esc_html( $adstn_total_items ); ?></span>
 		</h2>
 
 		<div class="adstn-logs-toolbar">
@@ -40,12 +42,12 @@ $total_pages = $logs_data['total_pages'];
 				<input type="hidden" name="page" value="adstn-auto-poster">
 				<input type="hidden" name="tab" value="logs">
 
-				<input type="text" name="s_log" value="<?php echo esc_attr( $search_q ); ?>" class="adstn-input adstn-input-sm" placeholder="<?php esc_attr_e( 'Search logs...', 'adstn-auto-poster' ); ?>" style="width: 180px;">
+				<input type="text" name="s_log" value="<?php echo esc_attr( $adstn_search_q ); ?>" class="adstn-input adstn-input-sm" placeholder="<?php esc_attr_e( 'Search logs...', 'adstn-auto-poster' ); ?>" style="width: 180px;">
 
 				<select name="status_filter" class="adstn-select adstn-select-sm">
 					<option value=""><?php esc_html_e( 'All Statuses', 'adstn-auto-poster' ); ?></option>
-					<option value="success" <?php selected( $filter_st, 'success' ); ?>><?php esc_html_e( 'Success Only', 'adstn-auto-poster' ); ?></option>
-					<option value="failed" <?php selected( $filter_st, 'failed' ); ?>><?php esc_html_e( 'Failed Only', 'adstn-auto-poster' ); ?></option>
+					<option value="success" <?php selected( $adstn_filter_st, 'success' ); ?>><?php esc_html_e( 'Success Only', 'adstn-auto-poster' ); ?></option>
+					<option value="failed" <?php selected( $adstn_filter_st, 'failed' ); ?>><?php esc_html_e( 'Failed Only', 'adstn-auto-poster' ); ?></option>
 				</select>
 
 				<button type="submit" class="adstn-btn-sm adstn-btn-secondary">
@@ -53,14 +55,14 @@ $total_pages = $logs_data['total_pages'];
 					<?php esc_html_e( 'Filter', 'adstn-auto-poster' ); ?>
 				</button>
 
-				<?php if ( ! empty( $filter_st ) || ! empty( $search_q ) ) : ?>
+				<?php if ( ! empty( $adstn_filter_st ) || ! empty( $adstn_search_q ) ) : ?>
 					<a href="<?php echo esc_url( admin_url( 'admin.php?page=adstn-auto-poster&tab=logs' ) ); ?>" class="adstn-btn-sm adstn-btn-secondary">
 						<?php esc_html_e( 'Reset', 'adstn-auto-poster' ); ?>
 					</a>
 				<?php endif; ?>
 			</form>
 
-			<?php if ( ! empty( $items ) ) : ?>
+			<?php if ( ! empty( $adstn_items ) ) : ?>
 				<button type="button" id="adstn-clear-logs-btn" class="adstn-btn-sm adstn-btn-danger">
 					<span class="dashicons dashicons-trash"></span>
 					<?php esc_html_e( 'Clear Logs', 'adstn-auto-poster' ); ?>
@@ -72,7 +74,7 @@ $total_pages = $logs_data['total_pages'];
 	<!-- Table Area -->
 	<div class="adstn-card-body padding-none">
 
-		<?php if ( ! empty( $items ) ) : ?>
+		<?php if ( ! empty( $adstn_items ) ) : ?>
 			<div class="adstn-table-responsive">
 				<table class="adstn-table">
 					<thead>
@@ -85,14 +87,14 @@ $total_pages = $logs_data['total_pages'];
 						</tr>
 					</thead>
 					<tbody>
-						<?php foreach ( $items as $log ) : ?>
+						<?php foreach ( $adstn_items as $adstn_log ) : ?>
 							<tr>
 								<td>
-									<?php if ( 'success' === $log['status'] ) : ?>
+									<?php if ( 'success' === $adstn_log['status'] ) : ?>
 										<span class="adstn-status-pill is-active" title="<?php esc_attr_e( 'Published Successfully', 'adstn-auto-poster' ); ?>">
 											✓ <?php esc_html_e( 'Success', 'adstn-auto-poster' ); ?>
 										</span>
-									<?php elseif ( 'failed' === $log['status'] ) : ?>
+									<?php elseif ( 'failed' === $adstn_log['status'] ) : ?>
 										<span class="adstn-status-pill is-suspended" title="<?php esc_attr_e( 'Publishing Failed', 'adstn-auto-poster' ); ?>">
 											✕ <?php esc_html_e( 'Failed', 'adstn-auto-poster' ); ?>
 										</span>
@@ -104,30 +106,33 @@ $total_pages = $logs_data['total_pages'];
 								</td>
 
 								<td>
-									<?php if ( ! empty( $log['post_id'] ) ) : ?>
+									<?php if ( ! empty( $adstn_log['post_id'] ) ) : ?>
 										<strong>
-											<a href="<?php echo esc_url( get_edit_post_link( $log['post_id'] ) ); ?>" target="_blank">
-												<?php echo esc_html( ! empty( $log['post_title'] ) ? $log['post_title'] : sprintf( __( 'Post #%s', 'adstn-auto-poster' ), $log['post_id'] ) ); ?>
+											<a href="<?php echo esc_url( get_edit_post_link( $adstn_log['post_id'] ) ); ?>" target="_blank">
+												<?php
+												/* translators: %s: post ID number */
+												echo esc_html( ! empty( $adstn_log['post_title'] ) ? $adstn_log['post_title'] : sprintf( __( 'Post #%s', 'adstn-auto-poster' ), $adstn_log['post_id'] ) );
+												?>
 											</a>
 										</strong>
-										<span style="font-size: 11px; color: var(--adstn-text-muted); display: block;">ID: #<?php echo esc_html( $log['post_id'] ); ?></span>
+										<span style="font-size: 11px; color: var(--adstn-text-muted); display: block;">ID: #<?php echo esc_html( $adstn_log['post_id'] ); ?></span>
 									<?php else : ?>
-										<span><?php echo esc_html( $log['post_title'] ); ?></span>
+										<span><?php echo esc_html( $adstn_log['post_title'] ); ?></span>
 									<?php endif; ?>
 								</td>
 
 								<td style="font-size: 12px; color: var(--adstn-text-muted);">
-									<?php echo esc_html( $log['created_at'] ); ?>
+									<?php echo esc_html( $adstn_log['created_at'] ); ?>
 								</td>
 
 								<td style="font-size: 12px;">
-									<?php if ( 'success' === $log['status'] ) : ?>
+									<?php if ( 'success' === $adstn_log['status'] ) : ?>
 										<span style="color: #10d876; font-weight: 600;">
 											<?php esc_html_e( 'Content published and verified on ADStn', 'adstn-auto-poster' ); ?>
 										</span>
-									<?php elseif ( ! empty( $log['error_message'] ) ) : ?>
+									<?php elseif ( ! empty( $adstn_log['error_message'] ) ) : ?>
 										<span style="color: #e94b5f; font-weight: 600;">
-											<?php echo esc_html( $log['error_message'] ); ?>
+											<?php echo esc_html( $adstn_log['error_message'] ); ?>
 										</span>
 									<?php else : ?>
 										<span>—</span>
@@ -136,12 +141,12 @@ $total_pages = $logs_data['total_pages'];
 
 								<td style="text-align: center;">
 									<div style="display: flex; justify-content: center; gap: 6px;">
-										<button type="button" class="adstn-btn-icon js-view-log-details" data-log-id="<?php echo esc_attr( $log['id'] ); ?>" title="<?php esc_attr_e( 'View Request & Response Details', 'adstn-auto-poster' ); ?>">
+										<button type="button" class="adstn-btn-icon js-view-log-details" data-log-id="<?php echo esc_attr( $adstn_log['id'] ); ?>" title="<?php esc_attr_e( 'View Request & Response Details', 'adstn-auto-poster' ); ?>">
 											<span class="dashicons dashicons-visibility"></span>
 										</button>
 
-										<?php if ( 'failed' === $log['status'] && ! empty( $log['post_id'] ) ) : ?>
-											<button type="button" class="adstn-btn-icon js-retry-log" data-log-id="<?php echo esc_attr( $log['id'] ); ?>" title="<?php esc_attr_e( 'Retry Publish Now', 'adstn-auto-poster' ); ?>" style="color: #615dfa;">
+										<?php if ( 'failed' === $adstn_log['status'] && ! empty( $adstn_log['post_id'] ) ) : ?>
+											<button type="button" class="adstn-btn-icon js-retry-log" data-log-id="<?php echo esc_attr( $adstn_log['id'] ); ?>" title="<?php esc_attr_e( 'Retry Publish Now', 'adstn-auto-poster' ); ?>" style="color: #615dfa;">
 												<span class="dashicons dashicons-image-rotate"></span>
 											</button>
 										<?php endif; ?>
@@ -154,23 +159,23 @@ $total_pages = $logs_data['total_pages'];
 			</div>
 
 			<!-- Pagination -->
-			<?php if ( $total_pages > 1 ) : ?>
+			<?php if ( $adstn_total_pages > 1 ) : ?>
 				<div class="adstn-pagination">
 					<?php
-					$base_url = admin_url( 'admin.php?page=adstn-auto-poster&tab=logs' );
-					if ( ! empty( $filter_st ) ) {
-						$base_url = add_query_arg( 'status_filter', $filter_st, $base_url );
+					$adstn_base_url = admin_url( 'admin.php?page=adstn-auto-poster&tab=logs' );
+					if ( ! empty( $adstn_filter_st ) ) {
+						$adstn_base_url = add_query_arg( 'status_filter', $adstn_filter_st, $adstn_base_url );
 					}
-					if ( ! empty( $search_q ) ) {
-						$base_url = add_query_arg( 's_log', $search_q, $base_url );
+					if ( ! empty( $adstn_search_q ) ) {
+						$adstn_base_url = add_query_arg( 's_log', $adstn_search_q, $adstn_base_url );
 					}
 
-					for ( $i = 1; $i <= $total_pages; $i++ ) {
-						$page_url = add_query_arg( 'paged', $i, $base_url );
-						$is_cur   = ( $page_num === $i );
+					for ( $adstn_i = 1; $adstn_i <= $adstn_total_pages; $adstn_i++ ) {
+						$adstn_page_url = add_query_arg( 'paged', $adstn_i, $adstn_base_url );
+						$adstn_is_cur   = ( $adstn_page_num === $adstn_i );
 						?>
-						<a href="<?php echo esc_url( $page_url ); ?>" class="adstn-page-link <?php echo $is_cur ? 'is-active' : ''; ?>">
-							<?php echo esc_html( $i ); ?>
+						<a href="<?php echo esc_url( $adstn_page_url ); ?>" class="adstn-page-link <?php echo $adstn_is_cur ? 'is-active' : ''; ?>">
+							<?php echo esc_html( $adstn_i ); ?>
 						</a>
 					<?php } ?>
 				</div>

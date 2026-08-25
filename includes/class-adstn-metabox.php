@@ -98,7 +98,10 @@ class ADStn_Metabox {
 					<strong>✓ <?php esc_html_e( 'Published to ADStn', 'adstn-auto-poster' ); ?></strong>
 					<?php if ( $published_at ) : ?>
 						<div style="font-size: 10px; color: #15803d; margin-top: 2px;">
-							<?php echo esc_html( sprintf( __( 'Date: %s', 'adstn-auto-poster' ), $published_at ) ); ?>
+							<?php
+							/* translators: %s: date and time when the post was published to ADStn */
+							echo esc_html( sprintf( __( 'Date: %s', 'adstn-auto-poster' ), $published_at ) );
+							?>
 						</div>
 					<?php endif; ?>
 				</div>

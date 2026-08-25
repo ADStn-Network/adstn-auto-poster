@@ -209,8 +209,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<span class="adstn-slabel"><?php esc_html_e( 'Enabled Post Types:', 'adstn-auto-poster' ); ?></span>
 					<span class="adstn-svalue">
 						<?php
-						$pts = ! empty( $settings['post_types'] ) ? (array) $settings['post_types'] : array( 'post' );
-						echo esc_html( implode( ', ', $pts ) );
+						$adstn_pts = ! empty( $settings['post_types'] ) ? (array) $settings['post_types'] : array( 'post' );
+						echo esc_html( implode( ', ', $adstn_pts ) );
 						?>
 					</span>
 				</div>
@@ -226,8 +226,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<span class="adstn-slabel"><?php esc_html_e( 'Hashtags Mode:', 'adstn-auto-poster' ); ?></span>
 					<span class="adstn-svalue">
 						<?php
-						$hm = ! empty( $settings['hashtags_mode'] ) ? $settings['hashtags_mode'] : 'tags';
-						echo esc_html( sprintf( __( 'Mode: %s (Max: %d)', 'adstn-auto-poster' ), $hm, ! empty( $settings['max_hashtags'] ) ? (int) $settings['max_hashtags'] : 5 ) );
+						$adstn_hm = ! empty( $settings['hashtags_mode'] ) ? $settings['hashtags_mode'] : 'tags';
+						/* translators: %1$s: hashtag mode name, %2$d: maximum number of hashtags */
+						echo esc_html( sprintf( __( 'Mode: %1$s (Max: %2$d)', 'adstn-auto-poster' ), $adstn_hm, ! empty( $settings['max_hashtags'] ) ? (int) $settings['max_hashtags'] : 5 ) );
 						?>
 					</span>
 				</div>

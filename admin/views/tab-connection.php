@@ -9,10 +9,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$redirect_uri = ADStn_API_Client::get_redirect_uri();
-$auth_url     = $api_client->get_authorization_url();
-$auth_method  = ! empty( $settings['auth_method'] ) ? $settings['auth_method'] : 'oauth';
-$expires_at   = ! empty( $settings['token_expires_at'] ) ? (int) $settings['token_expires_at'] : 0;
+$adstn_redirect_uri = ADStn_API_Client::get_redirect_uri();
+$adstn_auth_url     = $api_client->get_authorization_url();
+$adstn_auth_method  = ! empty( $settings['auth_method'] ) ? $settings['auth_method'] : 'oauth';
+$adstn_expires_at   = ! empty( $settings['token_expires_at'] ) ? (int) $settings['token_expires_at'] : 0;
 ?>
 
 <form id="adstn-connection-form" class="adstn-form" method="post">
@@ -25,12 +25,12 @@ $expires_at   = ! empty( $settings['token_expires_at'] ) ? (int) $settings['toke
 				<?php esc_html_e( 'Authentication Method', 'adstn-auto-poster' ); ?>
 			</h2>
 			<div class="adstn-segmented-control">
-				<label class="adstn-segment-label <?php echo 'oauth' === $auth_method ? 'is-active' : ''; ?>">
-					<input type="radio" name="auth_method" value="oauth" <?php checked( $auth_method, 'oauth' ); ?>>
+				<label class="adstn-segment-label <?php echo 'oauth' === $adstn_auth_method ? 'is-active' : ''; ?>">
+					<input type="radio" name="auth_method" value="oauth" <?php checked( $adstn_auth_method, 'oauth' ); ?>>
 					<span>OAuth 2.0 (<?php esc_html_e( 'Recommended', 'adstn-auto-poster' ); ?>)</span>
 				</label>
-				<label class="adstn-segment-label <?php echo 'manual_token' === $auth_method ? 'is-active' : ''; ?>">
-					<input type="radio" name="auth_method" value="manual_token" <?php checked( $auth_method, 'manual_token' ); ?>>
+				<label class="adstn-segment-label <?php echo 'manual_token' === $adstn_auth_method ? 'is-active' : ''; ?>">
+					<input type="radio" name="auth_method" value="manual_token" <?php checked( $adstn_auth_method, 'manual_token' ); ?>>
 					<span><?php esc_html_e( 'Manual Access Token', 'adstn-auto-poster' ); ?></span>
 				</label>
 			</div>
@@ -47,7 +47,7 @@ $expires_at   = ! empty( $settings['token_expires_at'] ) ? (int) $settings['toke
 					<strong><?php esc_html_e( 'Authorized Redirect URI:', 'adstn-auto-poster' ); ?></strong>
 					<p style="margin: 4px 0 8px;"><?php esc_html_e( 'Copy this URL and paste it into the Redirect URIs field when creating your app on ADStn Developer Platform:', 'adstn-auto-poster' ); ?></p>
 					<div class="adstn-copy-box">
-						<input type="text" readonly id="adstn-redirect-uri-input" class="adstn-input" value="<?php echo esc_url( $redirect_uri ); ?>">
+						<input type="text" readonly id="adstn-redirect-uri-input" class="adstn-input" value="<?php echo esc_url( $adstn_redirect_uri ); ?>">
 						<button type="button" class="adstn-btn adstn-btn-secondary js-adstn-copy" data-target="#adstn-redirect-uri-input">
 							<span class="dashicons dashicons-clipboard"></span>
 							<span><?php esc_html_e( 'Copy URL', 'adstn-auto-poster' ); ?></span>
@@ -57,7 +57,7 @@ $expires_at   = ! empty( $settings['token_expires_at'] ) ? (int) $settings['toke
 			</div>
 
 			<!-- OAuth 2.0 Credentials Section -->
-			<div id="adstn-oauth-section" class="adstn-auth-section" style="<?php echo 'oauth' !== $auth_method ? 'display:none;' : ''; ?>">
+			<div id="adstn-oauth-section" class="adstn-auth-section" style="<?php echo 'oauth' !== $adstn_auth_method ? 'display:none;' : ''; ?>">
 
 				<div class="adstn-form-grid">
 					<div class="adstn-form-group">
@@ -86,7 +86,7 @@ $expires_at   = ! empty( $settings['token_expires_at'] ) ? (int) $settings['toke
 
 				<div class="adstn-oauth-connect-box">
 					<?php if ( ! empty( $settings['client_id'] ) && ! empty( $settings['client_secret'] ) ) : ?>
-						<a href="<?php echo esc_url( $auth_url ); ?>" class="adstn-btn adstn-btn-primary adstn-btn-lg">
+						<a href="<?php echo esc_url( $adstn_auth_url ); ?>" class="adstn-btn adstn-btn-primary adstn-btn-lg">
 							<span class="dashicons dashicons-admin-links"></span>
 							<span><?php esc_html_e( 'Connect & Authorize with ADStn', 'adstn-auto-poster' ); ?> &rarr;</span>
 						</a>
@@ -106,7 +106,7 @@ $expires_at   = ! empty( $settings['token_expires_at'] ) ? (int) $settings['toke
 			</div>
 
 			<!-- Manual Token Section -->
-			<div id="adstn-manual-token-section" class="adstn-auth-section" style="<?php echo 'manual_token' !== $auth_method ? 'display:none;' : ''; ?>">
+			<div id="adstn-manual-token-section" class="adstn-auth-section" style="<?php echo 'manual_token' !== $adstn_auth_method ? 'display:none;' : ''; ?>">
 				<div class="adstn-form-group">
 					<label for="adstn-access-token" class="adstn-label">
 						<?php esc_html_e( 'Bearer Access Token', 'adstn-auto-poster' ); ?>
@@ -147,10 +147,11 @@ $expires_at   = ! empty( $settings['token_expires_at'] ) ? (int) $settings['toke
 						<span class="adstn-info-title"><?php esc_html_e( 'Token Expiry', 'adstn-auto-poster' ); ?></span>
 						<strong>
 							<?php
-							if ( $expires_at > 0 ) {
-								$remaining = $expires_at - time();
-								if ( $remaining > 0 ) {
-									echo esc_html( sprintf( __( 'Expires in %d minutes (auto-refreshes)', 'adstn-auto-poster' ), round( $remaining / 60 ) ) );
+							if ( $adstn_expires_at > 0 ) {
+								$adstn_remaining = $adstn_expires_at - time();
+								if ( $adstn_remaining > 0 ) {
+									/* translators: %d: number of minutes until token expires */
+									echo esc_html( sprintf( __( 'Expires in %d minutes (auto-refreshes)', 'adstn-auto-poster' ), round( $adstn_remaining / 60 ) ) );
 								} else {
 									echo esc_html__( 'Expired (will auto-refresh on demand)', 'adstn-auto-poster' );
 								}

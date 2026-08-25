@@ -9,15 +9,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$template       = ! empty( $settings['message_template'] ) ? $settings['message_template'] : "{title}\n\n{excerpt}\n\n{url}";
-$excerpt_length = isset( $settings['excerpt_length'] ) ? (int) $settings['excerpt_length'] : 160;
-$hashtags_mode  = ! empty( $settings['hashtags_mode'] ) ? $settings['hashtags_mode'] : 'tags';
-$max_hashtags   = isset( $settings['max_hashtags'] ) ? (int) $settings['max_hashtags'] : 5;
+$adstn_template       = ! empty( $settings['message_template'] ) ? $settings['message_template'] : "{title}\n\n{excerpt}\n\n{url}";
+$adstn_excerpt_length = isset( $settings['excerpt_length'] ) ? (int) $settings['excerpt_length'] : 160;
+$adstn_hashtags_mode  = ! empty( $settings['hashtags_mode'] ) ? $settings['hashtags_mode'] : 'tags';
+$adstn_max_hashtags   = isset( $settings['max_hashtags'] ) ? (int) $settings['max_hashtags'] : 5;
 
-$sample_preview = ADStn_Publisher::generate_sample_preview( $template );
-$user_name      = ! empty( $connected_user['name'] ) ? $connected_user['name'] : ( ! empty( $connected_user['username'] ) ? $connected_user['username'] : get_bloginfo( 'name' ) );
-$user_avatar    = ! empty( $connected_user['avatar'] ) ? $connected_user['avatar'] : '';
-$is_verified    = ! empty( $connected_user['verified'] );
+$adstn_sample_preview = ADStn_Publisher::generate_sample_preview( $adstn_template );
+$adstn_user_name      = ! empty( $connected_user['name'] ) ? $connected_user['name'] : ( ! empty( $connected_user['username'] ) ? $connected_user['username'] : get_bloginfo( 'name' ) );
+$adstn_user_avatar    = ! empty( $connected_user['avatar'] ) ? $connected_user['avatar'] : '';
+$adstn_is_verified    = ! empty( $connected_user['verified'] );
 ?>
 
 <form id="adstn-template-form" class="adstn-form" method="post">
@@ -75,7 +75,7 @@ $is_verified    = ! empty( $connected_user['verified'] );
 							<?php esc_html_e( 'Template Format:', 'adstn-auto-poster' ); ?>
 							<span class="adstn-req">*</span>
 						</label>
-						<textarea id="adstn-message-template" name="message_template" rows="8" class="adstn-textarea" style="font-family: inherit; font-size: 14px; line-height: 1.6;"><?php echo esc_textarea( $template ); ?></textarea>
+						<textarea id="adstn-message-template" name="message_template" rows="8" class="adstn-textarea" style="font-family: inherit; font-size: 14px; line-height: 1.6;"><?php echo esc_textarea( $adstn_template ); ?></textarea>
 						<div class="adstn-char-counter">
 							<span id="adstn-char-count">0</span> <?php esc_html_e( 'characters (approx.)', 'adstn-auto-poster' ); ?>
 						</div>
@@ -99,8 +99,8 @@ $is_verified    = ! empty( $connected_user['verified'] );
 							<?php esc_html_e( 'Maximum Excerpt Length {excerpt} in characters:', 'adstn-auto-poster' ); ?>
 						</label>
 						<div style="display: flex; align-items: center; gap: 12px;">
-							<input type="range" id="adstn-excerpt-range" min="50" max="500" step="10" value="<?php echo esc_attr( $excerpt_length ); ?>" style="flex:1;">
-							<input type="number" id="adstn-excerpt-length" name="excerpt_length" class="adstn-input" value="<?php echo esc_attr( $excerpt_length ); ?>" min="50" max="1000" style="width: 90px; text-align: center;">
+							<input type="range" id="adstn-excerpt-range" min="50" max="500" step="10" value="<?php echo esc_attr( $adstn_excerpt_length ); ?>" style="flex:1;">
+							<input type="number" id="adstn-excerpt-length" name="excerpt_length" class="adstn-input" value="<?php echo esc_attr( $adstn_excerpt_length ); ?>" min="50" max="1000" style="width: 90px; text-align: center;">
 						</div>
 					</div>
 
@@ -110,10 +110,10 @@ $is_verified    = ! empty( $connected_user['verified'] );
 								<?php esc_html_e( 'Generate Hashtags {hashtags} From:', 'adstn-auto-poster' ); ?>
 							</label>
 							<select id="adstn-hashtags-mode" name="hashtags_mode" class="adstn-select">
-								<option value="tags" <?php selected( $hashtags_mode, 'tags' ); ?>><?php esc_html_e( 'Post Tags Only', 'adstn-auto-poster' ); ?></option>
-								<option value="categories" <?php selected( $hashtags_mode, 'categories' ); ?>><?php esc_html_e( 'Post Categories Only', 'adstn-auto-poster' ); ?></option>
-								<option value="both" <?php selected( $hashtags_mode, 'both' ); ?>><?php esc_html_e( 'Both Tags and Categories', 'adstn-auto-poster' ); ?></option>
-								<option value="none" <?php selected( $hashtags_mode, 'none' ); ?>><?php esc_html_e( 'No Hashtags', 'adstn-auto-poster' ); ?></option>
+								<option value="tags" <?php selected( $adstn_hashtags_mode, 'tags' ); ?>><?php esc_html_e( 'Post Tags Only', 'adstn-auto-poster' ); ?></option>
+								<option value="categories" <?php selected( $adstn_hashtags_mode, 'categories' ); ?>><?php esc_html_e( 'Post Categories Only', 'adstn-auto-poster' ); ?></option>
+								<option value="both" <?php selected( $adstn_hashtags_mode, 'both' ); ?>><?php esc_html_e( 'Both Tags and Categories', 'adstn-auto-poster' ); ?></option>
+								<option value="none" <?php selected( $adstn_hashtags_mode, 'none' ); ?>><?php esc_html_e( 'No Hashtags', 'adstn-auto-poster' ); ?></option>
 							</select>
 						</div>
 
@@ -121,7 +121,7 @@ $is_verified    = ! empty( $connected_user['verified'] );
 							<label for="adstn-max-hashtags" class="adstn-label">
 								<?php esc_html_e( 'Maximum Hashtag Count:', 'adstn-auto-poster' ); ?>
 							</label>
-							<input type="number" id="adstn-max-hashtags" name="max_hashtags" class="adstn-input" value="<?php echo esc_attr( $max_hashtags ); ?>" min="0" max="30">
+							<input type="number" id="adstn-max-hashtags" name="max_hashtags" class="adstn-input" value="<?php echo esc_attr( $adstn_max_hashtags ); ?>" min="0" max="30">
 						</div>
 					</div>
 
@@ -152,16 +152,16 @@ $is_verified    = ! empty( $connected_user['verified'] );
 						<!-- Post Head -->
 						<div class="adstn-sim-header">
 							<div class="adstn-sim-avatar">
-								<?php if ( ! empty( $user_avatar ) ) : ?>
-									<img src="<?php echo esc_url( $user_avatar ); ?>" alt="Avatar">
+								<?php if ( ! empty( $adstn_user_avatar ) ) : ?>
+									<img src="<?php echo esc_url( $adstn_user_avatar ); ?>" alt="Avatar">
 								<?php else : ?>
-									<div class="adstn-sim-avatar-fallback"><?php echo esc_html( mb_substr( $user_name, 0, 1 ) ); ?></div>
+									<div class="adstn-sim-avatar-fallback"><?php echo esc_html( mb_substr( $adstn_user_name, 0, 1 ) ); ?></div>
 								<?php endif; ?>
 							</div>
 							<div class="adstn-sim-user">
 								<div class="adstn-sim-name">
-									<strong><?php echo esc_html( $user_name ); ?></strong>
-									<?php if ( $is_verified ) : ?>
+									<strong><?php echo esc_html( $adstn_user_name ); ?></strong>
+									<?php if ( $adstn_is_verified ) : ?>
 										<span class="adstn-verified-mini" title="Verified">✓</span>
 									<?php endif; ?>
 								</div>
@@ -172,7 +172,7 @@ $is_verified    = ! empty( $connected_user['verified'] );
 
 						<!-- Post Body / Content -->
 						<div class="adstn-sim-body" id="adstn-sim-content">
-							<?php echo nl2br( esc_html( $sample_preview ) ); ?>
+							<?php echo nl2br( esc_html( $adstn_sample_preview ) ); ?>
 						</div>
 
 						<!-- Simulated Link Attachment Box -->

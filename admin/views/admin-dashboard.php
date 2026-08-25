@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$tab_names = array(
+$adstn_tab_names = array(
 	'overview'   => array( 'title' => __( 'Overview & Analytics', 'adstn-auto-poster' ), 'icon' => 'dashicons-dashboard' ),
 	'connection' => array( 'title' => __( 'Connection & API', 'adstn-auto-poster' ), 'icon' => 'dashicons-admin-links' ),
 	'rules'      => array( 'title' => __( 'Publishing Rules', 'adstn-auto-poster' ), 'icon' => 'dashicons-filter' ),
@@ -68,11 +68,11 @@ $tab_names = array(
 
 		<!-- Nav Tabs -->
 		<nav class="adstn-nav-tabs">
-			<?php foreach ( $tab_names as $tab_key => $tab_info ) : ?>
-				<a href="<?php echo esc_url( admin_url( 'admin.php?page=adstn-auto-poster&tab=' . $tab_key ) ); ?>"
-				   class="adstn-tab-link <?php echo $current_tab === $tab_key ? 'is-active' : ''; ?>">
-					<span class="dashicons <?php echo esc_attr( $tab_info['icon'] ); ?>"></span>
-					<span><?php echo esc_html( $tab_info['title'] ); ?></span>
+			<?php foreach ( $adstn_tab_names as $adstn_tab_key => $adstn_tab_info ) : ?>
+				<a href="<?php echo esc_url( admin_url( 'admin.php?page=adstn-auto-poster&tab=' . $adstn_tab_key ) ); ?>"
+				   class="adstn-tab-link <?php echo $current_tab === $adstn_tab_key ? 'is-active' : ''; ?>">
+					<span class="dashicons <?php echo esc_attr( $adstn_tab_info['icon'] ); ?>"></span>
+					<span><?php echo esc_html( $adstn_tab_info['title'] ); ?></span>
 				</a>
 			<?php endforeach; ?>
 		</nav>

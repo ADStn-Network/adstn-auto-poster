@@ -8,7 +8,7 @@
  * Author URI:        https://www.adstn.ovh
  * Text Domain:       adstn-auto-poster
  * Domain Path:       /languages
- * Requires at least: 5.6
+ * Requires at least: 5.8
  * Requires PHP:      7.4
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
@@ -43,8 +43,6 @@ register_deactivation_hook( __FILE__, array( 'ADStn_Activator', 'deactivate' ) )
  * Initialize Plugin Core.
  */
 function adstn_auto_poster_init() {
-	// Load Text Domain
-	load_plugin_textdomain( 'adstn-auto-poster', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 
 	// Initialize Publisher (Hooks into post transitions)
 	new ADStn_Publisher();

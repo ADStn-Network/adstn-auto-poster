@@ -180,6 +180,7 @@ class ADStn_Admin {
 	 * Handle OAuth 2.0 Callback.
 	 */
 	public function handle_oauth_callback() {
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended -- OAuth 2.0 callback from external ADStn authorization server; nonce is not applicable here.
 		if ( ! isset( $_GET['page'] ) || 'adstn-auto-poster' !== $_GET['page'] ) {
 			return;
 		}
@@ -195,6 +196,7 @@ class ADStn_Admin {
 		// Handle error parameter from ADStn
 		if ( isset( $_GET['error'] ) ) {
 			$error_desc = isset( $_GET['error_description'] ) ? sanitize_text_field( wp_unslash( $_GET['error_description'] ) ) : sanitize_text_field( wp_unslash( $_GET['error'] ) );
+			/* translators: %s: error description from ADStn authorization server */
 			set_transient( 'adstn_admin_notice', array( 'type' => 'error', 'message' => sprintf( __( 'ADStn authorization failed: %s', 'adstn-auto-poster' ), $error_desc ) ), 30 );
 			wp_safe_redirect( admin_url( 'admin.php?page=adstn-auto-poster&tab=connection' ) );
 			exit;
@@ -207,6 +209,7 @@ class ADStn_Admin {
 			$result = $this->api_client->exchange_code_for_token( $code );
 
 			if ( is_wp_error( $result ) ) {
+				/* translators: %s: error message from token exchange */
 				set_transient( 'adstn_admin_notice', array( 'type' => 'error', 'message' => sprintf( __( 'Error exchanging token: %s', 'adstn-auto-poster' ), $result->get_error_message() ) ), 30 );
 			} else {
 				set_transient( 'adstn_admin_notice', array( 'type' => 'success', 'message' => __( '🎉 ADStn account connected successfully! Ready for auto-publishing.', 'adstn-auto-poster' ) ), 30 );
@@ -215,6 +218,7 @@ class ADStn_Admin {
 			wp_safe_redirect( admin_url( 'admin.php?page=adstn-auto-poster&tab=overview' ) );
 			exit;
 		}
+		// phpcs:enable WordPress.Security.NonceVerification.Recommended
 	}
 
 	/**
@@ -225,7 +229,9 @@ class ADStn_Admin {
 			return;
 		}
 
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only GET parameter for tab navigation on admin page.
 		$current_tab = isset( $_GET['tab'] ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ) ) : 'overview';
+		// phpcs:enable WordPress.Security.NonceVerification.Recommended
 		$valid_tabs  = array( 'overview', 'connection', 'rules', 'template', 'logs', 'help' );
 
 		if ( ! in_array( $current_tab, $valid_tabs, true ) ) {
