@@ -193,6 +193,13 @@ class ADStn_Admin {
 			wp_die( esc_html__( 'Unauthorized access.', 'adstn-auto-poster' ) );
 		}
 
+		// Validate OAuth state token against CSRF
+		if ( isset( $_GET['state'] ) && ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['state'] ) ), 'adstn_oauth_state' ) ) {
+			set_transient( 'adstn_admin_notice', array( 'type' => 'error', 'message' => __( 'Security check failed. Invalid OAuth state token.', 'adstn-auto-poster' ) ), 30 );
+			wp_safe_redirect( admin_url( 'admin.php?page=adstn-auto-poster&tab=connection' ) );
+			exit;
+		}
+
 		// Handle error parameter from ADStn
 		if ( isset( $_GET['error'] ) ) {
 			$error_desc = isset( $_GET['error_description'] ) ? sanitize_text_field( wp_unslash( $_GET['error_description'] ) ) : sanitize_text_field( wp_unslash( $_GET['error'] ) );
@@ -507,6 +514,10 @@ class ADStn_Admin {
 	 */
 	public function ajax_preview_template() {
 		check_ajax_referer( 'adstn_admin_nonce', 'nonce' );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error( array( 'message' => __( 'Permission denied.', 'adstn-auto-poster' ) ) );
+		}
 
 		$template = isset( $_POST['template'] ) ? sanitize_textarea_field( wp_unslash( $_POST['template'] ) ) : '';
 		$preview  = ADStn_Publisher::generate_sample_preview( $template );

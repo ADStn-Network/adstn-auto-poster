@@ -1,9 +1,9 @@
 === ADStn Auto Poster ===
-Contributors: adstn
+Contributors: mrghozzi, adstn
 Donate link: https://www.adstn.ovh
 Tags: adstn, auto publish, social share, auto post, crosspost
 Requires at least: 5.8
-Tested up to: 7.1
+Tested up to: 6.7
 Requires PHP: 7.4
 Stable tag: 1.0.0
 License: GPLv2 or later
@@ -48,7 +48,7 @@ Increase your reach, boost social engagement, and drive traffic back to your web
   * One-click "Retry" action for failed attempts.
 * **Modern & Multilingual Dashboard**:
   * Clean, responsive UI with Glassmorphism styling and dark/light accents.
-  * 100% WordPress i18n/l10n standard compliant with complete English source and ready-to-use Arabic translations.
+  * 100% WordPress i18n/l10n standard compliant with `.pot` template for seamless community translations via translate.wordpress.org.
 
 == Third-Party Services ==
 
@@ -57,8 +57,8 @@ This plugin integrates with and connects to the **ADStn Developer Platform** (ht
 * **Service Name**: ADStn (https://www.adstn.ovh)
 * **Purpose**: User OAuth 2.0 authentication, profile validation, and publishing post content to the authenticated user's ADStn feed.
 * **Data Transmitted**: Post title, URL, post excerpt, generated hashtags, and user OAuth tokens. No private site data or visitor information is sent.
-* **Terms of Service**: https://www.adstn.ovh/terms/terms
-* **Privacy Policy**: https://www.adstn.ovh/terms/privacy-policy
+* **Terms of Service**: https://www.adstn.ovh/terms
+* **Privacy Policy**: https://www.adstn.ovh/privacy
 
 == Installation ==
 
@@ -87,7 +87,7 @@ Yes. In **ADStn Poster** &rarr; **Publish Rules**, you can select specific categ
 Yes. Open the post in the WordPress editor, scroll down to the **ADStn Auto Poster** sidebar metabox, and click **Share to ADStn Now**.
 
 = Is this plugin translation-ready? =
-Yes. The plugin is 100% internationalized with `.pot`, `.po`, and `.mo` files included in the `/languages` directory.
+Yes. The plugin is 100% internationalized with a template `.pot` file included in `/languages` and is fully ready for translate.wordpress.org.
 
 == Screenshots ==
 
