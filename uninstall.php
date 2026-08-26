@@ -15,7 +15,18 @@ delete_option( 'adstn_activity_logs' );
 delete_transient( 'adstn_user_profile' );
 delete_transient( 'adstn_admin_notice' );
 
-// Clean custom post meta created by the plugin.
-// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Uninstall routine; bulk cleanup of plugin-specific meta is acceptable here.
-global $wpdb;
-$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->postmeta} WHERE meta_key LIKE %s", '_adstn_%' ) );
+// Clean custom post meta created by the plugin using standard WordPress API.
+$meta_keys = array(
+	'_adstn_published',
+	'_adstn_published_at',
+	'_adstn_auto_publish',
+	'_adstn_custom_message',
+	'_adstn_last_error',
+	'_adstn_error_time',
+	'_adstn_adstn_post_id',
+);
+
+foreach ( $meta_keys as $meta_key ) {
+	delete_post_meta_by_key( $meta_key );
+}
+
