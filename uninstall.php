@@ -16,7 +16,7 @@ delete_transient( 'adstn_user_profile' );
 delete_transient( 'adstn_admin_notice' );
 
 // Clean custom post meta created by the plugin using standard WordPress API.
-$meta_keys = array(
+$adstn_meta_keys = array(
 	'_adstn_published',
 	'_adstn_published_at',
 	'_adstn_auto_publish',
@@ -26,7 +26,8 @@ $meta_keys = array(
 	'_adstn_adstn_post_id',
 );
 
-foreach ( $meta_keys as $meta_key ) {
-	delete_post_meta_by_key( $meta_key );
+foreach ( $adstn_meta_keys as $adstn_meta_key ) {
+	delete_post_meta_by_key( $adstn_meta_key );
 }
+
 
