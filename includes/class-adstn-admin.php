@@ -180,7 +180,6 @@ class ADStn_Admin {
 	 * Handle OAuth 2.0 Callback.
 	 */
 	public function handle_oauth_callback() {
-		// phpcs:disable WordPress.Security.NonceVerification.Recommended -- OAuth 2.0 callback from external ADStn authorization server; nonce is not applicable here.
 		if ( ! isset( $_GET['page'] ) || 'adstn-auto-poster' !== $_GET['page'] ) {
 			return;
 		}
@@ -189,13 +188,14 @@ class ADStn_Admin {
 			return;
 		}
 
+		// Check permissions
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_die( esc_html__( 'Unauthorized access.', 'adstn-auto-poster' ) );
 		}
 
-		// Validate OAuth state token against CSRF
-		if ( isset( $_GET['state'] ) && ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['state'] ) ), 'adstn_oauth_state' ) ) {
-			set_transient( 'adstn_admin_notice', array( 'type' => 'error', 'message' => __( 'Security check failed. Invalid OAuth state token.', 'adstn-auto-poster' ) ), 30 );
+		// Validate OAuth state token against CSRF (Fail early if missing or invalid)
+		if ( ! isset( $_GET['state'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['state'] ) ), 'adstn_oauth_state' ) ) {
+			set_transient( 'adstn_admin_notice', array( 'type' => 'error', 'message' => __( 'Security check failed. Missing or invalid OAuth state token.', 'adstn-auto-poster' ) ), 30 );
 			wp_safe_redirect( admin_url( 'admin.php?page=adstn-auto-poster&tab=connection' ) );
 			exit;
 		}
@@ -225,7 +225,6 @@ class ADStn_Admin {
 			wp_safe_redirect( admin_url( 'admin.php?page=adstn-auto-poster&tab=overview' ) );
 			exit;
 		}
-		// phpcs:enable WordPress.Security.NonceVerification.Recommended
 	}
 
 	/**
