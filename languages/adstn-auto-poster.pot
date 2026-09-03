@@ -2,7 +2,7 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: ADStn Auto Poster 1.0.0\n"
+"Project-Id-Version: ADStn Auto Poster 1.0.1\n"
 "Report-Msgid-Bugs-To: https://www.adstn.ovh/developer\n"
 "POT-Creation-Date: 2026-08-25 02:15:00+00:00\n"
 "MIME-Version: 1.0\n"

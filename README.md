@@ -60,7 +60,7 @@
 4. Create an application on the **ADStn Developer Portal**:
    - URL: [https://www.adstn.ovh/developer/apps/create](https://www.adstn.ovh/developer/apps/create)
    - Copy the **Authorized Redirect URI** from plugin settings into your ADStn App settings.
-   - Request scopes: `user.identity.read`, `user.profile.read`, `user.content.write`.
+   - Request scopes: `user.identity.read`, `user.content.write`.
 5. Enter your `Client ID` and `Client Secret`, then click **Connect & Authorize with ADStn**.
 
 ---
@@ -73,6 +73,18 @@
 - Strict data sanitization and escaping for all user inputs and database queries.
 
 ---
+
+---
+
+## 📝 Changelog
+
+### 1.0.1 (2026-09-03)
+- **Fix (WAF Compatibility):** Streamlined OAuth 2.0 scopes to `user.identity.read` and `user.content.write` to avoid aggressive Web Application Firewall (WAF) / ModSecurity rules blocking `.profile`.
+- **Fix (Callback Resilience):** Added defensive query parameter parsing in OAuth callback to handle servers appending query strings with `?` instead of `&`.
+- **Fix (WPCS & Compatibility):** Replaced `str_contains()` with `strpos()` for full WordPress 5.8+ compatibility and sanitized all callback inputs per WordPress Coding Standards.
+
+### 1.0.0 (2026-09-02)
+- Initial release with ADStn Developer REST API v1 & OAuth 2.0 Authorization Code flow.
 
 ## 📄 License
 

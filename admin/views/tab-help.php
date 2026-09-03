@@ -65,8 +65,7 @@ $adstn_redirect_uri = ADStn_API_Client::get_redirect_uri();
 							<p><?php esc_html_e( 'Ensure you enable the following permissions for your app:', 'adstn-auto-poster' ); ?></p>
 							<div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px;">
 								<code class="adstn-badge adstn-badge-info">user.identity.read</code>
-								<code class="adstn-badge adstn-badge-info">user.profile.read</code>
-								<code class="adstn-badge adstn-badge-success">user.content.write</code>
+																<code class="adstn-badge adstn-badge-success">user.content.write</code>
 							</div>
 						</div>
 					</div>

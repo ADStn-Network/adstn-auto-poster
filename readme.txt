@@ -5,7 +5,7 @@ Tags: adstn, auto publish, social share, auto post, crosspost
 Requires at least: 5.8
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -68,7 +68,7 @@ This plugin integrates with and connects to the **ADStn Developer Platform** (ht
 4. Create an application in the ADStn Developer Platform at `https://www.adstn.ovh/developer/apps/create`:
    * Set your App Name and Website Domain.
    * Copy the **Authorized Redirect URI** displayed in the plugin settings and paste it into the **Redirect URIs** field on ADStn.
-   * Enable the required scopes: `user.identity.read`, `user.profile.read`, `user.content.write`.
+   * Enable the required scopes: `user.identity.read`, `user.content.write`.
 5. Copy your **Client ID** and **Client Secret** into the plugin settings and click **Connect & Authorize with ADStn**.
 6. That's it! Your published posts will now automatically sync to your ADStn account.
 
@@ -100,6 +100,13 @@ Yes. The plugin is 100% internationalized with a template `.pot` file included i
 
 == Changelog ==
 
+= 1.0.1 =
+* Fix: Streamlined OAuth 2.0 scopes to `user.identity.read` and `user.content.write`, eliminating Web Application Firewall (WAF) and ModSecurity false-positive blocks on system dotfile rules (`.profile`).
+* Fix: Added defensive query parameter recovery in the OAuth callback handler (`handle_oauth_callback`) to support authorization servers that concatenate callback parameters with `?` instead of `&`.
+* Fix: Improved backward compatibility with WordPress 5.8+ by replacing `str_contains()` with `strpos()` in callback processing.
+* Security: Hardened input sanitization and unslashing for incoming query parameters with full WordPress Coding Standards (WPCS) compliance.
+* Tweak: Updated admin connection and setup guide views to reflect required OAuth scopes.
+
 = 1.0.0 =
 * Initial release.
 * Full integration with ADStn Developer REST API v1 and OAuth 2.0 Authorization Code Flow.
@@ -110,6 +117,9 @@ Yes. The plugin is 100% internationalized with a template `.pot` file included i
 * Full WordPress i18n/L10n multilingual support (English & Arabic).
 
 == Upgrade Notice ==
+
+= 1.0.1 =
+Recommended update: Fixes OAuth 2.0 authorization callback processing, enhances WAF firewall compatibility, and improves WordPress 5.8+ compatibility.
 
 = 1.0.0 =
 Initial official release on WordPress.org.

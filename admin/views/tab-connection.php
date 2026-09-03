@@ -163,7 +163,7 @@ $adstn_expires_at   = ! empty( $settings['token_expires_at'] ) ? (int) $settings
 					</div>
 					<div class="adstn-info-tile">
 						<span class="adstn-info-title"><?php esc_html_e( 'Active Scopes', 'adstn-auto-poster' ); ?></span>
-						<code style="font-size: 11px;">user.content.write, user.profile.read</code>
+						<code style="font-size: 11px;">user.identity.read, user.content.write</code>
 					</div>
 				</div>
 			</div>

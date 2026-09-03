@@ -45,7 +45,7 @@ class ADStn_API_Client {
 	/**
 	 * OAuth Scopes needed for auto-poster.
 	 */
-	const REQUIRED_SCOPES = 'user.identity.read user.profile.read user.content.write';
+	const REQUIRED_SCOPES = 'user.identity.read user.content.write';
 
 	/**
 	 * Client ID.

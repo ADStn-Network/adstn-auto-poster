@@ -180,13 +180,39 @@ class ADStn_Admin {
 	 * Handle OAuth 2.0 Callback.
 	 */
 	public function handle_oauth_callback() {
-		if ( ! isset( $_GET['page'] ) || 'adstn-auto-poster' !== $_GET['page'] ) {
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Early inspection of OAuth callback parameters prior to state nonce verification.
+		$raw_page   = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : '';
+		$raw_action = isset( $_GET['action'] ) ? sanitize_text_field( wp_unslash( $_GET['action'] ) ) : '';
+
+		if ( 'adstn-auto-poster' !== $raw_page ) {
 			return;
 		}
 
-		if ( ! isset( $_GET['action'] ) || 'adstn_oauth_callback' !== $_GET['action'] ) {
+		// Defensive fix: in case authorization server appended query params with '?' instead of '&'
+		// e.g. admin.php?page=adstn-auto-poster&action=adstn_oauth_callback?code=...&state=...
+		if ( '' !== $raw_action && false !== strpos( $raw_action, 'adstn_oauth_callback?' ) ) {
+			$parts      = explode( '?', $raw_action, 2 );
+			$raw_action = $parts[0];
+			$_GET['action'] = $raw_action;
+			if ( ! empty( $parts[1] ) ) {
+				parse_str( $parts[1], $extra_params );
+				foreach ( $extra_params as $param_k => $param_v ) {
+					$clean_k = sanitize_key( $param_k );
+					$clean_v = sanitize_text_field( wp_unslash( (string) $param_v ) );
+					if ( ! isset( $_GET[ $clean_k ] ) ) {
+						$_GET[ $clean_k ] = $clean_v;
+					}
+					if ( ! isset( $_REQUEST[ $clean_k ] ) ) {
+						$_REQUEST[ $clean_k ] = $clean_v;
+					}
+				}
+			}
+		}
+
+		if ( 'adstn_oauth_callback' !== $raw_action ) {
 			return;
 		}
+		// phpcs:enable WordPress.Security.NonceVerification.Recommended
 
 		// Check permissions
 		if ( ! current_user_can( 'manage_options' ) ) {
