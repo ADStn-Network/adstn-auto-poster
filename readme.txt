@@ -1,11 +1,11 @@
-=== ADStn Auto Poster ===
+=== ADStn Auto Poster ===
 Contributors: mrghozzi
 Donate link: https://www.adstn.ovh
 Tags: adstn, auto publish, social share, auto post, crosspost
 Requires at least: 5.8
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -101,9 +101,10 @@ Yes. The plugin is 100% internationalized with a template `.pot` file included i
 == Changelog ==
 
 = 1.0.1 =
-* Fix: Streamlined OAuth 2.0 scopes to `user.identity.read` and `user.content.write`, eliminating Web Application Firewall (WAF) and ModSecurity false-positive blocks on system dotfile rules (`.profile`).
-* Fix: Added defensive query parameter recovery in the OAuth callback handler (`handle_oauth_callback`) to support authorization servers that concatenate callback parameters with `?` instead of `&`.
-* Fix: Improved backward compatibility with WordPress 5.8+ by replacing `str_contains()` with `strpos()` in callback processing.
+* Fix: Enhanced API Authorization header delivery resilience with fallback query parameters and request payload support for Apache/FastCGI environments.
+* Fix: Streamlined OAuth 2.0 scopes to `user.identity.read` and `user.content.write`, eliminating Web Application Firewall (WAF) and ModSecurity false-positive blocks.
+* Fix: Added fail-early state token validation in the OAuth callback handler for improved CSRF security.
+* Fix: Improved backward compatibility with WordPress 5.8+ by replacing `str_contains()` with `strpos()`.
 * Security: Hardened input sanitization and unslashing for incoming query parameters with full WordPress Coding Standards (WPCS) compliance.
 * Tweak: Updated admin connection and setup guide views to reflect required OAuth scopes.
 
@@ -119,7 +120,7 @@ Yes. The plugin is 100% internationalized with a template `.pot` file included i
 == Upgrade Notice ==
 
 = 1.0.1 =
-Recommended update: Fixes OAuth 2.0 authorization callback processing, enhances WAF firewall compatibility, and improves WordPress 5.8+ compatibility.
+Recommended update: Fixes API authorization header delivery in restricted hosting environments, enhances OAuth 2.0 callback processing, and improves compatibility.
 
 = 1.0.0 =
 Initial official release on WordPress.org.

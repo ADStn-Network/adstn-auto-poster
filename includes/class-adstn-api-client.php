@@ -302,8 +302,9 @@ class ADStn_API_Client {
 		}
 
 		// Try Profile endpoint first
-		$response = wp_remote_get(
-			self::BASE_URL . self::PROFILE_ENDPOINT,
+		$profile_url = add_query_arg( 'access_token', $token, self::BASE_URL . self::PROFILE_ENDPOINT );
+		$response    = wp_remote_get(
+			$profile_url,
 			array(
 				'headers'   => array(
 					'Authorization'   => 'Bearer ' . $token,
@@ -324,8 +325,9 @@ class ADStn_API_Client {
 
 		// If profile endpoint returns 404 or fails, try /api/developer/v1/me
 		if ( $status_code >= 400 || empty( $body ) ) {
+			$me_url      = add_query_arg( 'access_token', $token, self::BASE_URL . self::ME_ENDPOINT );
 			$response_me = wp_remote_get(
-				self::BASE_URL . self::ME_ENDPOINT,
+				$me_url,
 				array(
 					'headers'   => array(
 						'Authorization'   => 'Bearer ' . $token,
@@ -403,12 +405,15 @@ class ADStn_API_Client {
 		}
 
 		$payload = array(
-			'content' => $content,
-			'privacy' => $privacy,
+			'content'      => $content,
+			'privacy'      => $privacy,
+			'access_token' => $token,
 		);
 
+		$publish_url = add_query_arg( 'access_token', $token, self::BASE_URL . self::CONTENT_ENDPOINT );
+
 		$response = wp_remote_post(
-			self::BASE_URL . self::CONTENT_ENDPOINT,
+			$publish_url,
 			array(
 				'headers'   => array(
 					'Authorization'   => 'Bearer ' . $token,

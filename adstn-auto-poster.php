@@ -3,7 +3,7 @@
  * Plugin Name:       ADStn Auto Poster
  * Plugin URI:        https://github.com/ADStn-Network/adstn-auto-poster
  * Description:       Auto-publish and synchronize WordPress articles to the ADStn social platform seamlessly via Developer REST API & OAuth 2.0.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            ADStn Developer Team
  * Author URI:        https://www.adstn.ovh
  * Text Domain:       adstn-auto-poster
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'ADSTN_VERSION', '1.0.0' );
+define( 'ADSTN_VERSION', '1.0.1' );
 define( 'ADSTN_PLUGIN_FILE', __FILE__ );
 define( 'ADSTN_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'ADSTN_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
