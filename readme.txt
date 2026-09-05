@@ -1,5 +1,5 @@
 === ADStn Auto Poster ===
-Contributors: mrghozzi, adstn
+Contributors: mrghozzi
 Donate link: https://www.adstn.ovh
 Tags: adstn, auto publish, social share, auto post, crosspost
 Requires at least: 5.8
