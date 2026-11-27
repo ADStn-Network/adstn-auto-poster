@@ -5,7 +5,7 @@ Tags: adstn, auto publish, social share, auto post, crosspost
 Requires at least: 5.8
 Tested up to: 7.2
 Requires PHP: 7.4
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -100,6 +100,9 @@ Yes. The plugin is 100% internationalized with a template `.pot` file included i
 
 == Changelog ==
 
+= 1.0.2 =
+* Tested up to WordPress 7.2.
+
 = 1.0.1 =
 * Fix: Enhanced API Authorization header delivery resilience with fallback query parameters and request payload support for Apache/FastCGI environments.
 * Fix: Streamlined OAuth 2.0 scopes to `user.identity.read` and `user.content.write`, eliminating Web Application Firewall (WAF) and ModSecurity false-positive blocks.
@@ -118,6 +121,9 @@ Yes. The plugin is 100% internationalized with a template `.pot` file included i
 * Full WordPress i18n/L10n multilingual support (English & Arabic).
 
 == Upgrade Notice ==
+
+= 1.0.2 =
+Confirmed compatibility with WordPress 7.2.
 
 = 1.0.1 =
 Recommended update: Fixes API authorization header delivery in restricted hosting environments, enhances OAuth 2.0 callback processing, and improves compatibility.
